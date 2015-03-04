@@ -1,10 +1,10 @@
 package com.gagauz.common.tools;
 
-abstract public class ChainPredicateImpl<E> implements ChainPredicate<E> {
+abstract public class FilterChainImpl<E> implements FilterChain<E> {
     @Override
-    public final ChainPredicate<E> and(final Predicate<E> and) {
-        final ChainPredicate<E> $this = this;
-        return new ChainPredicateImpl<E>() {
+    public final FilterChain<E> and(final Filter<E> and) {
+        final FilterChain<E> $this = this;
+        return new FilterChainImpl<E>() {
             @Override
             public boolean apply(E element) {
                 return $this.apply(element) && and.apply(element);
@@ -13,9 +13,9 @@ abstract public class ChainPredicateImpl<E> implements ChainPredicate<E> {
     }
 
     @Override
-    public final ChainPredicate<E> or(final Predicate<E> or) {
-        final ChainPredicate<E> $this = this;
-        return new ChainPredicateImpl<E>() {
+    public final FilterChain<E> or(final Filter<E> or) {
+        final FilterChain<E> $this = this;
+        return new FilterChainImpl<E>() {
             @Override
             public boolean apply(E element) {
                 return $this.apply(element) || or.apply(element);
@@ -24,9 +24,9 @@ abstract public class ChainPredicateImpl<E> implements ChainPredicate<E> {
     }
 
     @Override
-    public final ChainPredicate<E> not() {
-        final ChainPredicate<E> $this = this;
-        return new ChainPredicateImpl<E>() {
+    public final FilterChain<E> not() {
+        final FilterChain<E> $this = this;
+        return new FilterChainImpl<E>() {
             @Override
             public boolean apply(E element) {
                 return !$this.apply(element);

@@ -39,4 +39,48 @@ public class C {
         return new LinkedList<E>(source);
     }
 
+    public static <P, V> Collection<V> transform(Collection<P> iterable, Function<P, V> adapter) {
+        Collection<V> result = new ArrayList<V>(iterable.size());
+        for (P p : iterable) {
+            result.add(adapter.call(p));
+        }
+        return result;
+    }
+
+    public static <P, V> Collection<V> transform(P[] iterable, Function<P, V> adapter) {
+        ArrayList<V> result = new ArrayList<V>(iterable.length);
+        for (P p : iterable) {
+            result.add(adapter.call(p));
+        }
+        return result;
+    }
+
+    public static <E> List<E> filter(E[] iterable, Filter<E> filter) {
+        ArrayList<E> result = newArrayList(iterable.length);
+        for (E element : iterable) {
+            if (filter.apply(element)) {
+                result.add(element);
+            }
+        }
+        return result;
+    }
+
+    public static <E> List<E> filter(Collection<E> iterable, Filter<E> filter) {
+        ArrayList<E> result = newArrayList(iterable.size());
+        for (E element : iterable) {
+            if (filter.apply(element)) {
+                result.add(element);
+            }
+        }
+        return result;
+    }
+
+    public static <E> E find(Iterable<E> iterable, Filter<E> filter) {
+        for (E element : iterable) {
+            if (filter.apply(element)) {
+                return element;
+            }
+        }
+        return null;
+    }
 }

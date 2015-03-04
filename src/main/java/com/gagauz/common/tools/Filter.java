@@ -1,5 +1,5 @@
 package com.gagauz.common.tools;
 
-public interface Predicate<E> {
+public interface Filter<E> {
     boolean apply(E element);
 }

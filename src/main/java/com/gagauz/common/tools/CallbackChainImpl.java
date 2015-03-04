@@ -1,11 +1,11 @@
 package com.gagauz.common.tools;
 
-public abstract class ChainCallbackImpl<E> implements ChainCallback<E> {
+public abstract class CallbackChainImpl<E> implements CallbackChain<E> {
 
     @Override
-    public ChainCallback<E> append(final Callback<E> append) {
-        final ChainCallback<E> $this = this;
-        return new ChainCallbackImpl<E>() {
+    public CallbackChain<E> append(final Callback<E> append) {
+        final CallbackChain<E> $this = this;
+        return new CallbackChainImpl<E>() {
             @Override
             public void call(E object) {
                 $this.call(object);
@@ -15,9 +15,9 @@ public abstract class ChainCallbackImpl<E> implements ChainCallback<E> {
     }
 
     @Override
-    public ChainCallback<E> prepend(final Callback<E> prepend) {
-        final ChainCallback<E> $this = this;
-        return new ChainCallbackImpl<E>() {
+    public CallbackChain<E> prepend(final Callback<E> prepend) {
+        final CallbackChain<E> $this = this;
+        return new CallbackChainImpl<E>() {
             @Override
             public void call(E object) {
                 prepend.call(object);
