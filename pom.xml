@@ -1,6 +1,6 @@
-<project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.gagauz.common</groupId>
 	<artifactId>utils</artifactId>
@@ -11,13 +11,8 @@
 		<repository>
 			<id>sourceforge</id>
 			<name>SourceForge</name>
-			<url>scp://xl0e,tapestrysecurity@shell.sourceforge.net:/home/frs/project/tapestrysecurity/releases</url>
+			<url>scpexe://xl0e,tapestrysecurity@shell.sourceforge.net:/home/project-web/tapestrysecurity/htdocs/maven_repo</url>
 		</repository>
-		<snapshotRepository>
-			<id>sourceforge</id>
-			<name>SourceForge</name>
-			<url>scp://xl0e,tapestrysecurity@shell.sourceforge.net:/home/frs/project/tapestrysecurity/snapshots</url>
-		</snapshotRepository>
 	</distributionManagement>
 
 	<build>
@@ -49,20 +44,32 @@
 					<uniqueVersion>false</uniqueVersion>
 				</configuration>
 			</plugin>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 		<extensions>
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-ssh</artifactId>
+				<artifactId>wagon-ssh-external</artifactId>
+				<version>2.6</version>
 			</extension>
-	    </extensions>
+		</extensions>
 	</build>
 
 	<reporting />
 
 	<repositories>
-		<!-- This repository is only needed when the Tapestry version is a preview 
-			release, rather than a final release. -->
+		<!-- This repository is only needed when the Tapestry version is a preview release, rather than a final release. -->
 		<repository>
 			<id>apache-staging</id>
 			<url>https://repository.apache.org/content/groups/staging/</url>

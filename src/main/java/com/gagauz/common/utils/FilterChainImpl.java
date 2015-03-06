@@ -1,4 +1,4 @@
-package com.gagauz.common.tools;
+package com.gagauz.common.utils;
 
 abstract public class FilterChainImpl<E> implements FilterChain<E> {
     @Override

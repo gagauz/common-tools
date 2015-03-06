@@ -1,4 +1,4 @@
-package com.gagauz.common.tools;
+package com.gagauz.common.utils;
 
 import java.util.*;
 

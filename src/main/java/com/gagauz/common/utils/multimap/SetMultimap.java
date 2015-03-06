@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gagauz.common.tools.multimap;
+package com.gagauz.common.utils.multimap;
 
 import java.util.List;
 import java.util.Map;

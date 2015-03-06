@@ -1,4 +1,4 @@
-package com.gagauz.common.tools.multimap;
+package com.gagauz.common.utils.multimap;
 
 import java.util.*;
 

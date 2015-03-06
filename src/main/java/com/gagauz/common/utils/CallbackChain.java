@@ -1,4 +1,4 @@
-package com.gagauz.common.tools;
+package com.gagauz.common.utils;
 
 public interface CallbackChain<E> extends Callback<E> {
     CallbackChain<E> append(Callback<E> append);
