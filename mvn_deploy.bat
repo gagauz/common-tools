@@ -1,2 +1,2 @@
-call mvn -e deploy
+call mvn -e -DuniqueVersion=false compile deploy
 pause
